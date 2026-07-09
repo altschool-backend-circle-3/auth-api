@@ -1,12 +1,12 @@
 # TODO — Auth API Project
 
-Granular task breakdown from project kickoff to MVP completion. Check items off as they're done. Tasks are grouped in phases — later phases assume earlier ones are complete, but tasks *within* a phase can often be split across contributors and worked on in parallel.
+Granular task breakdown from project kickoff to MVP completion. Check items off as they're done. Tasks are grouped in phases — later phases assume earlier ones are complete, but tasks _within_ a phase can often be split across contributors and worked on in parallel.
 
 ---
 
 ## Phase 0: Infrastructure Setup
 
-*(Mostly done already — kept here for completeness and future reference)*
+_(Mostly done already — kept here for completeness and future reference)_
 
 - [x] Create GitHub organization
 - [x] Create `auth-api` repository under the org
@@ -16,7 +16,7 @@ Granular task breakdown from project kickoff to MVP completion. Check items off 
 - [x] Enable branch protection on `main` (require PR + approval)
 - [x] Enable branch protection on `dev` (require PR + approval)
 - [x] Add team/contributors with Write access
-- [ ] Confirm all circle members have accepted their GitHub invite
+- [x] Confirm all circle members have accepted their GitHub invite
 - [x] Add project scope document to repo
 - [x] Add README with scope doc link at top
 - [x] Create initial folder structure (`config`, `models`, `controllers`, `routes`, `middleware`, `utils`, `public`)
@@ -31,13 +31,13 @@ Granular task breakdown from project kickoff to MVP completion. Check items off 
 - [ ] Every contributor grabs their own connection string
 - [ ] Create `.env.example` in repo (committed) listing required variable names only
 - [ ] Every contributor creates their own local `.env` (never committed) using `.env.example` as a guide
-- [ ] Run `npm init -y` to generate initial `package.json` (if not already done)
-- [ ] Install core dependencies: `express`, `mongoose`, `bcryptjs`, `jsonwebtoken`, `dotenv`, `cors`
-- [ ] Install dev dependency: `nodemon`
-- [ ] Add `"dev": "nodemon server.js"` script to `package.json`
-- [ ] Commit `package.json` and `package-lock.json`
-- [ ] Confirm `node_modules/` and `.env` are both in `.gitignore`
-- [ ] Every contributor runs `npm install` after pulling, confirms app boots locally
+- [x] Run `npm init -y` to generate initial `package.json` (if not already done)
+- [x] Install core dependencies: `express`, `mongoose`, `bcryptjs`, `jsonwebtoken`, `dotenv`, `cors`
+- [x] Install dev dependency: `nodemon`
+- [x] Add `"dev": "nodemon server.js"` script to `package.json`
+- [x] Commit `package.json` and `package-lock.json`
+- [x] Confirm `node_modules/` and `.env` are both in `.gitignore`
+- [x] Every contributor runs `npm install` after pulling, confirms app boots locally
 
 ---
 
@@ -79,6 +79,7 @@ Granular task breakdown from project kickoff to MVP completion. Check items off 
 ## Phase 5: Auth Endpoints (Controllers + Routes)
 
 ### Sign Up
+
 - [ ] `controllers/authController.js` — write `signup` function
 - [ ] Hash password with `bcryptjs` before saving
 - [ ] Handle duplicate email error gracefully (return a clean `400`, not a raw MongoDB error)
@@ -87,6 +88,7 @@ Granular task breakdown from project kickoff to MVP completion. Check items off 
 - [ ] Test via Postman: valid signup, duplicate email, missing fields
 
 ### Login
+
 - [ ] `controllers/authController.js` — write `login` function
 - [ ] Look up user by email, explicitly select password field (`.select('+password')`)
 - [ ] Compare submitted password against hash with `bcrypt.compare()`
@@ -96,6 +98,7 @@ Granular task breakdown from project kickoff to MVP completion. Check items off 
 - [ ] Test via Postman: correct credentials, wrong password, non-existent email
 
 ### Change Password
+
 - [ ] `controllers/authController.js` — write `changePassword` function
 - [ ] Require current password, verify it matches before allowing change
 - [ ] Hash new password before saving
@@ -103,6 +106,7 @@ Granular task breakdown from project kickoff to MVP completion. Check items off 
 - [ ] Test via Postman: correct current password, wrong current password, no token
 
 ### Get All Users
+
 - [ ] `controllers/authController.js` — write `getAllUsers` function
 - [ ] Exclude password field from returned data
 - [ ] Wire up `GET /api/users` in `routes/authRoutes.js`, protected by `authMiddleware` + `adminMiddleware`
@@ -134,17 +138,20 @@ Granular task breakdown from project kickoff to MVP completion. Check items off 
 ## Phase 8: Frontend Logic (JS)
 
 ### Signup Page
+
 - [ ] `public/js/signup.js` — capture form submit, prevent default page reload
 - [ ] Send `POST` request to `/api/auth/signup` with fetch
 - [ ] Handle success (redirect to login) and error (display message) states
 
 ### Login Page
+
 - [ ] `public/js/login.js` — capture form submit
 - [ ] Send `POST` request to `/api/auth/login`
 - [ ] On success, store JWT in `localStorage`
 - [ ] Redirect to dashboard on success, show error message on failure
 
 ### Dashboard / Change Password
+
 - [ ] `public/js/dashboard.js` — on page load, check `localStorage` for token; redirect to login if missing
 - [ ] Fetch and display logged-in user's basic info (optional: a "who am I" call, or just show what's in the JWT)
 - [ ] Change password form — send `PATCH` request with `Authorization: Bearer <token>` header
@@ -152,6 +159,7 @@ Granular task breakdown from project kickoff to MVP completion. Check items off 
 - [ ] Add a logout button — clears token from `localStorage`, redirects to login
 
 ### Admin View (Get All Users)
+
 - [ ] Add a simple admin-only page or section that calls `GET /api/users`
 - [ ] Handle `403` gracefully for non-admin users (hide the link/section, or show a clear message)
 - [ ] Render returned user list in a simple table or list
@@ -199,4 +207,4 @@ Granular task breakdown from project kickoff to MVP completion. Check items off 
 
 ---
 
-*Update this file as tasks are completed or re-scoped — it should always reflect where the project actually stands, not where it stood at kickoff.*
+_Update this file as tasks are completed or re-scoped — it should always reflect where the project actually stands, not where it stood at kickoff._
