@@ -4,6 +4,12 @@
 
 Start there before touching any code — it covers MVP features, API contract, token strategy, data model, folder structure, and git workflow. This README covers setup and running the project locally; the scope doc covers what we're building and why.
 
+**Other project docs:**
+
+- 🤝 [CONTRIBUTING.md](./CONTRIBUTING.md) — git workflow, branching, commit conventions, and how to submit a PR
+- 🗂️ [PROJECT_EXPLANATION.md](./PROJECT_EXPLANATION.md) — what every folder and file does, and how a request flows through the app
+- ✅ [TODO.md](./TODO.md) — full task breakdown from setup to launch
+
 ---
 
 ## About This Project
@@ -34,15 +40,27 @@ Full detail on each in the [scope document](./auth-api-project-scope.md).
 
 - Node.js (v18+ recommended)
 - npm
-- A MongoDB connection string (local instance or MongoDB Atlas)
+- Access to the project's MongoDB Atlas organization (ask the circle lead for an invite)
+- Your own MongoDB Atlas project and cluster (see [Database Setup](#database-setup) below)
 
 ### Installation
 
 ```bash
-git clone https://github.com/your-org-name/auth-api.git
+git clone https://github.com/altschool-backend-circle-3/auth-api.git
 cd auth-api
 npm install
 ```
+
+### Database Setup
+
+Each contributor runs their **own isolated MongoDB Atlas project and cluster** for this MVP, rather than sharing one database. This keeps test data (signups, deletions, edits) fully separate between contributors while everyone works against the same codebase.
+
+1. Accept the invite to the project's Atlas organization
+2. Inside the org, create your own Atlas **Project** (e.g., `yourname-dev-env`)
+3. Inside that project, create your own free-tier (M0) **Cluster**
+4. Create a **Database User** for yourself (username + password — separate from your Atlas login)
+5. Under Network Access, allow access from anywhere (`0.0.0.0/0`) — acceptable for this learning project, not something to carry over to production use
+6. Copy your personal connection string for the next step
 
 ### Environment Variables
 
@@ -55,12 +73,12 @@ cp .env.example .env
 Required variables:
 
 ```
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=your_own_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 PORT=5000
 ```
 
-Never commit your actual `.env` file — it's gitignored by default.
+`MONGO_URI` should be your own personal connection string from the Database Setup step above — not shared with other contributors. Never commit your actual `.env` file — it's gitignored by default.
 
 ### Running Locally
 
@@ -83,13 +101,14 @@ Full request/response shapes are in the [scope document](./auth-api-project-scop
 
 ## Contributing
 
-- `main` is the stable, always-working branch — it is **not** touched directly by contributors
-- `dev` is the active working branch — all feature work happens here
-- Branch off `dev` using the naming convention: `feature/signup`, `feature/login`, etc.
-- Open a PR **into `dev`** — direct pushes to both `main` and `dev` are disabled by branch protection
-- At least one review approval is required before merge into `dev`
-- Once features in `dev` are complete and tested against the Definition of Done, `dev` is promoted to `main` (this merge is handled by the circle lead)
-- Keep commits scoped and messages descriptive (`feat:`, `fix:`, `docs:` prefixes welcome)
+Full workflow details — branching strategy, commit conventions, PR process, and database setup — are documented in [CONTRIBUTING.md](./CONTRIBUTING.md). Quick summary:
+
+- `main` is stable and never touched directly; `dev` is the active working branch
+- Branch off `dev` (`feature/signup`, `feature/login`, etc.), open PRs into `dev`, not `main`
+- At least one review approval required before merge
+- `dev` is promoted to `main` once features are tested against the Definition of Done, handled by the circle lead
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the complete step-by-step.
 
 ## Known Limitations (by design, for MVP)
 
