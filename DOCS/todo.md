@@ -25,12 +25,12 @@ _(Mostly done already — kept here for completeness and future reference)_
 
 ## Phase 1: Local Environment & Dependencies
 
-- [ ] Every contributor clones the repo locally
-- [ ] Every contributor signs up for MongoDB Atlas (free tier)
-- [ ] Every contributor creates their own Atlas cluster
-- [ ] Every contributor grabs their own connection string
-- [ ] Create `.env.example` in repo (committed) listing required variable names only
-- [ ] Every contributor creates their own local `.env` (never committed) using `.env.example` as a guide
+- [x] Every contributor clones the repo locally
+- [x] Every contributor signs up for MongoDB Atlas (free tier)
+- [x] Every contributor creates their own Atlas cluster
+- [x] Every contributor grabs their own connection string
+- [x] Create `.env.example` in repo (committed) listing required variable names only
+- [x] Every contributor creates their own local `.env` (never committed) using `.env.example` as a guide
 - [x] Run `npm init -y` to generate initial `package.json` (if not already done)
 - [x] Install core dependencies: `express`, `mongoose`, `bcryptjs`, `jsonwebtoken`, `dotenv`, `cors`
 - [x] Install dev dependency: `nodemon`
