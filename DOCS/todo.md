@@ -43,24 +43,24 @@ _(Mostly done already — kept here for completeness and future reference)_
 
 ## Phase 2: Backend Foundation
 
-- [ ] `config/db.js` — write MongoDB connection function using `mongoose.connect()`
-- [ ] `server.js` — set up basic Express app (import express, create app instance)
-- [ ] `server.js` — connect to DB on startup (import and call `config/db.js`)
-- [ ] `server.js` — add `express.json()` middleware so the app can parse JSON request bodies
-- [ ] `server.js` — add `cors` middleware
-- [ ] `server.js` — set app to listen on `process.env.PORT`
-- [ ] Confirm server boots with `npm run dev` and logs "MongoDB connected" + "Server running on port X"
+- [x] `config/db.js` — write MongoDB connection function using `mongoose.connect()`
+- [x] `server.js` — set up basic Express app (import express, create app instance)
+- [x] `server.js` — connect to DB on startup (import and call `config/db.js`)
+- [x] `server.js` — add `express.json()` middleware so the app can parse JSON request bodies
+- [x] `server.js` — add `cors` middleware
+- [x] `server.js` — set app to listen on `process.env.PORT`
+- [x] Confirm server boots with `npm run dev` and logs "MongoDB connected" + "Server running on port X"
 
 ---
 
 ## Phase 3: Data Model
 
-- [ ] `models/User.js` — define Mongoose schema: `email`, `password`, `isAdmin`, `createdAt`
-- [ ] Set `email` as `required`, `unique`, `lowercase`, `trim`
-- [ ] Set `password` as `required`, `select: false`
-- [ ] Set `isAdmin` default to `false`
-- [ ] Export the model (`mongoose.model('User', userSchema)`)
-- [ ] Manually test: confirm duplicate email insert throws a MongoDB error (code `11000`)
+- [x] `models/User.js` — define Mongoose schema: `email`, `password`, `isAdmin`, `createdAt`
+- [x] Set `email` as `required`, `unique`, `lowercase`, `trim`
+- [x] Set `password` as `required`, `select: false`
+- [x] Set `isAdmin` default to `false`
+- [x] Export the model (`mongoose.model('User', userSchema)`)
+- [x] Manually test: confirm duplicate email insert throws a MongoDB error (code `11000`)
 
 ---
 
