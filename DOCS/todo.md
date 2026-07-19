@@ -89,12 +89,12 @@ _(Mostly done already — kept here for completeness and future reference)_
 
 ### Login
 
-- [ ] `controllers/authController.js` — write `login` function
-- [ ] Look up user by email, explicitly select password field (`.select('+password')`)
-- [ ] Compare submitted password against hash with `bcrypt.compare()`
-- [ ] Generate JWT on success using `utils/generateToken.js`
-- [ ] Return consistent response shape with token + user info (no password)
-- [ ] Wire up `POST /api/auth/login` in `routes/authRoutes.js`
+- [x] `controllers/authController.js` — write `login` function
+- [x] Look up user by email, explicitly select password field (`.select('+password')`)
+- [x] Compare submitted password against hash with `bcrypt.compare()`
+- [x] Generate JWT on success using `utils/generateToken.js`
+- [x] Return consistent response shape with token + user info (no password)
+- [x] Wire up `POST /api/auth/login` in `routes/authRoutes.js`
 - [ ] Test via Postman: correct credentials, wrong password, non-existent email
 
 ### Change Password
