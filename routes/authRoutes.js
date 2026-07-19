@@ -1,11 +1,8 @@
-import express from 'express';
+import { Router } from 'express';
 import authMiddleware from '../middleware/authMiddleware.js';
+import { signupUser } from '../controllers/authController.js';
 
-const router = express.Router();
-
-// sample route to test authmiddleware
-// router.get('/test-auth', authMiddleware, (req, res) => {
-//     res.json({ message: 'Success! You are authenticated.', user: req.user });
-// });
+const router = Router();
+router.route("/signup").post(signupUser)
 
 export default router;
