@@ -70,8 +70,8 @@ _(Mostly done already — kept here for completeness and future reference)_
 - [x] `middleware/authMiddleware.js` — extract token from `Authorization: Bearer` header
 - [x] `middleware/authMiddleware.js` — verify token, attach decoded user info to `req.user`
 - [x] `middleware/authMiddleware.js` — return `401` if token missing or invalid
-- [ ] `middleware/adminMiddleware.js` — check `req.user.isAdmin === true`
-- [ ] `middleware/adminMiddleware.js` — return `403` if not an admin
+- [x] `middleware/adminMiddleware.js` — check `req.user.isAdmin === true`
+- [x] `middleware/adminMiddleware.js` — return `403` if not an admin
 - [ ] Manually test both middleware functions with valid/invalid/missing tokens using Postman
 
 ---
