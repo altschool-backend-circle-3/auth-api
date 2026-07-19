@@ -22,7 +22,7 @@ const login = async function (req, res) {
     const user = await User.findOne({ email }).select("+password");
 
     if (!user) {
-      // same message for wrong email and wrong password — don't reveal which 
+      // same message for wrong email and wrong password — don't reveal which
       return res.status(401).json({
         success: false,
         message: "Invalid credentials",
