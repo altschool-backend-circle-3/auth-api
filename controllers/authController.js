@@ -1,8 +1,7 @@
 "use strict";
 
-const bcrypt = require("bcryptjs");
-const User = require("../models/User");
-const generateToken = require("../utils/generateToken");
+import User from "../models/User.js";
+import generateToken from "../utils/generateToken.js";
 
 // @desc    Log a user in
 // @route   POST /api/auth/login
@@ -29,7 +28,7 @@ const login = async function (req, res) {
       });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await user.comparePassword(password);
 
     if (!isMatch) {
       return res.status(401).json({
@@ -60,4 +59,4 @@ const login = async function (req, res) {
   }
 };
 
-module.exports = { login };
+export { login };
