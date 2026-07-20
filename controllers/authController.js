@@ -16,19 +16,21 @@ const signupUser = async (req, res) => {
         const user = await User.create({
             email, password
         })
-        if (user) {
-            // 4. Generate token and respond
-            const token = generateToken(user._id);
-            res.status(201).json({
-                success: true,
-                message: "User registered successfully",
-                data: {
-                    user: { id: user._id, email: user.email },
-                    token // Provide the token so the frontend can store it
-                }
-            });
-        }
+        // 4. Generate token and respond
+        const token = generateToken(user._id);
+        return res.status(201).json({
+            success: true,
+            message: "User registered successfully",
+            data: {
+                user: { id: user._id, email: user.email },
+                token // Provide the token so the frontend can store it
+            }
+        });
     } catch (err) {
+        if (err.code === 11000) {
+            return res.status(400).json({ success: false, message: "Email already in use" });
+        }
+
         console.error("Signup Error:", err);
         res.status(500).json({ success: false, message: "Internal server error" })
     }
