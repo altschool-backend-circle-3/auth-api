@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from "cors";
+import authRouter from './routes/authRoutes.js';
+
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-import authRouter from './routes/authRoutes.js';
 
 app.get("/", (req, res) => {
     res.json({
@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
     });
 });
 
-// sample route to test authMiddleware
-// app.use("/api/v1", authRouter)
+// route declaration
+app.use("/api/auth", authRouter)
 
 export default app;
