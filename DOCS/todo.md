@@ -80,11 +80,11 @@ _(Mostly done already — kept here for completeness and future reference)_
 
 ### Sign Up
 
-- [ ] `controllers/authController.js` — write `signup` function
-- [ ] Hash password with `bcryptjs` before saving
-- [ ] Handle duplicate email error gracefully (return a clean `400`, not a raw MongoDB error)
-- [ ] Return consistent success response shape (per scope doc)
-- [ ] Wire up `POST /api/auth/signup` in `routes/authRoutes.js`
+- [x] `controllers/authController.js` — write `signup` function
+- [x] Hash password with `bcryptjs` before saving
+- [x] Handle duplicate email error gracefully (return a clean `400`, not a raw MongoDB error)
+- [x] Return consistent success response shape (per scope doc)
+- [x] Wire up `POST /api/auth/signup` in `routes/authRoutes.js`
 - [ ] Test via Postman: valid signup, duplicate email, missing fields
 
 ### Login
