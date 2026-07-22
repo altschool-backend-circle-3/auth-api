@@ -84,4 +84,57 @@ const login = async (req, res) => {
     }
 };
 
-export { signup, login };
+// @desc    Change the logged-in user's password
+// @route   PATCH /api/auth/change-password
+// @access  Private
+const changePassword = async (req, res) => {
+    try {
+        const { currentPassword, newPassword } = req.body;
+
+        if (!currentPassword || !newPassword) {
+            return res.status(400).json({
+                success: false,
+                message: "Please provide both current and new password",
+            });
+        }
+
+        // req.user was attached by authMiddleware, but it excluded the password
+        // (select: false) — so we need to re-fetch this user WITH the password included
+        const user = await User.findById(req.user._id).select("+password");
+
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Not authorized",
+            });
+        }
+
+        const isMatch = await user.comparePassword(currentPassword);
+
+        if (!isMatch) {
+            return res.status(401).json({
+                success: false,
+                message: "Current password is incorrect",
+            });
+        }
+
+        // assign the new plaintext password — the pre('save') hook in the model
+        // will automatically hash it before it actually gets written to the database
+        user.password = newPassword;
+        await user.save();
+
+        return res.status(200).json({
+            success: true,
+            message: "Password changed successfully",
+        });
+
+    } catch (error) {
+        console.error("Change Password Error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error",
+        });
+    }
+};
+
+export { signup, login, changePassword };
