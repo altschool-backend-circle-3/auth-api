@@ -99,17 +99,17 @@ _(Mostly done already — kept here for completeness and future reference)_
 
 ### Change Password
 
-- [ ] `controllers/authController.js` — write `changePassword` function
-- [ ] Require current password, verify it matches before allowing change
-- [ ] Hash new password before saving
-- [ ] Wire up `PATCH /api/auth/change-password` in `routes/authRoutes.js`, protected by `authMiddleware`
+- [x] `controllers/authController.js` — write `changePassword` function
+- [x] Require current password, verify it matches before allowing change
+- [x] Hash new password before saving
+- [x] Wire up `PATCH /api/auth/change-password` in `routes/authRoutes.js`, protected by `authMiddleware`
 - [ ] Test via Postman: correct current password, wrong current password, no token
 
 ### Get All Users
 
-- [ ] `controllers/authController.js` — write `getAllUsers` function
-- [ ] Exclude password field from returned data
-- [ ] Wire up `GET /api/users` in `routes/authRoutes.js`, protected by `authMiddleware` + `adminMiddleware`
+- [x] `controllers/authController.js` — write `getAllUsers` function
+- [x] Exclude password field from returned data
+- [x] Wire up `GET /api/users` in `routes/authRoutes.js`, protected by `authMiddleware` + `adminMiddleware`
 - [ ] Test via Postman: as admin, as non-admin, with no token
 
 ---
