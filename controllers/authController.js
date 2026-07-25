@@ -118,6 +118,15 @@ const changePassword = async (req, res) => {
             });
         }
 
+        // reject if the new password is identical to the current one —
+        // both values are still plaintext here, so a direct comparison is fine
+        if (newPassword === currentPassword) {
+            return res.status(400).json({
+                success: false,
+                message: "New password must be different from current password",
+            });
+        }
+
         // assign the new plaintext password — the pre('save') hook in the model
         // will automatically hash it before it actually gets written to the database
         user.password = newPassword;
